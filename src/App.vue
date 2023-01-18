@@ -2,11 +2,8 @@
   <div>
     <h2>{{ title }}</h2>
     <input type="text" v-model="filter" />
-    <currency-selector
-      :currencies="allCurrencies"
-      :selectedCurrency="baseCurrency"
-      @currencyChange="updateBaseCurrency"
-    ></currency-selector>
+    <currency-selector :currencies="allCurrencies" :selectedCurrency="baseCurrency"
+      @currencyChange="updateBaseCurrency"></currency-selector>
     <table class="table">
       <thead>
         <tr>
@@ -33,10 +30,7 @@
           <td>
             <ul>
               <li v-for="(cur, key) in country.currencies" :key="key">
-                <button
-                  class="button is-ghost"
-                  @click="openExchangeRate(country, key)"
-                >
+                <button class="button is-ghost" @click="openExchangeRate(country, key)">
                   {{ key }}
                 </button>
               </li>
@@ -50,16 +44,13 @@
         </tr>
       </tbody>
     </table>
+    <!-- Modal avec component dynamique -->
     <div class="modal" :class="{ 'is-active': showOverlay }">
       <div class="modal-background"></div>
       <div class="modal-content">
         <component :is="targetComponent" v-bind="targetProperties" v-on="targetEventHandlers"></component>
       </div>
-      <button
-        class="modal-close is-large"
-        aria-label="close"
-        @click="closeOverlay"
-      ></button>
+      <button class="modal-close is-large" aria-label="close" @click="closeOverlay"></button>
     </div>
   </div>
 </template>
