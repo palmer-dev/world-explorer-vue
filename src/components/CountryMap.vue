@@ -1,5 +1,6 @@
 <template>
-  <embedded-map :query="mapQuery" :zoom="areaZoom"></embedded-map>
+  <embedded-map :query="mapQuery" :zoom="areaZoom" :map-type="mapType"
+    @mapTypeChange="forwardUpdateMapType"></embedded-map>
 </template>
 <script>
 import EmbeddedMap from "./EmbeddedMap.vue";
@@ -12,6 +13,10 @@ export default {
       type: Object,
       default: null,
     },
+    mapType: {
+      type: String,
+      default: "",
+    }
   },
   computed: {
     mapQuery: function () {
@@ -33,6 +38,10 @@ export default {
       return 9;
     },
   },
-  methods: {},
+  methods: {
+    forwardUpdateMapType: function (newType) {
+      this.$emit("updateMapType", newType);
+    }
+  },
 };
 </script>

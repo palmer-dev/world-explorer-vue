@@ -79,6 +79,7 @@ export default {
       targetComponent: "",
       targetCountry: null,
       targetCurrency: "",
+      mapType: "",
     };
   },
   methods: {
@@ -93,6 +94,9 @@ export default {
     },
     updateBaseCurrency(newCurrency) {
       this.baseCurrency = newCurrency;
+    },
+    updateLocalMapType(newMapType) {
+      this.mapType = newMapType;
     },
     openFlag: function (country) {
       this.targetCountry = country;
@@ -127,7 +131,10 @@ export default {
 
       switch (this.targetComponent) {
         case "CountryFlag":
+          props.country = this.targetCountry;
+          break;
         case "CountryMap":
+          props.mapType = this.mapType;
           props.country = this.targetCountry;
           break;
         case "CountryExchangeRate":
@@ -148,7 +155,10 @@ export default {
         return {
           currencyChange: this.updateTargetCurrency,
           baseCurrencyChange: this.updateBaseCurrency,
-        };
+        }
+      else if (this.targetComponent === "CountryMap") return {
+        updateMapType: this.updateLocalMapType,
+      }
 
       return {};
     },
