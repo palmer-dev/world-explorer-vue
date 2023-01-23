@@ -4,10 +4,14 @@
     <input type="text" v-model="filter" />
     <currency-selector :currencies="allCurrencies" :selectedCurrency="baseCurrency"
       @currencyChange="updateBaseCurrency"></currency-selector>
-    <select v-model="mapType">
-      <option value="">Carte routière</option>
-      <option value="k">Satellite</option>
-    </select>
+    <div>
+      <label for="selectMapType">Choisissez un type de carte : &nbsp;</label>
+      <select v-model="mapType">
+        <option value="">Carte routière</option>
+        <option value="k">Satellite</option>
+      </select>
+    </div>
+
     <table class="table">
       <thead>
         <tr>

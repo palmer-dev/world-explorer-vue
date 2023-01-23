@@ -1,9 +1,12 @@
 <template>
-  <div>
-    <select v-model="selectedMapType">
-      <option value="">Carte routière</option>
-      <option value="k">Satellite</option>
-    </select>
+  <div class="container">
+    <div>
+      <label for="selectMapType">Choisissez un type de carte : &nbsp;</label>
+      <select v-model="selectedMapType" name="selectMapType" id="selectMapType">
+        <option value="">Carte routière</option>
+        <option value="k">Satellite</option>
+      </select>
+    </div>
     <iframe :src="mapSrc" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
       class="map-container"></iframe>
   </div>
@@ -52,5 +55,16 @@ export default {
 .map-container {
   width: 100%;
   height: 500px;
+}
+
+.container {
+  background-color: white;
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
 </style>
